@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<link rel="shortcut icon" href="Image/favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+
+  <title>Сватническое бюро "БеЭла"</title>
+
+  <link rel="stylesheet" href="main.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="decor-top"></div>
+
+    <h1>Анкета «БеЭла»</h1>
+    <p class="subtitle">Грустите из-за неудавшегося свидания?<br>Долой печаль — мы быстро найдём замену!</p>
+
+  <form id="feedbackForm"
+  class="feedback-form"
+  action="https://formspree.io/f/xyzlykkz"
+  method="POST"
+  novalidate>
+
+  <fieldset class="fb-fieldset">
+  <legend class="fb-label">Тип подачи:</legend>
+
+  <label class="fb-radio">
+    <input type="radio" name="submission_type" value="first" required>
+    Первая подача
+  </label>
+
+  <label class="fb-radio">
+    <input type="radio" name="submission_type" value="repeat" required>
+    Повторная подача
+  </label>
+</fieldset>
+
+<label class="fb-label" for="fb-name">Имя Фамилия:</label>
+<input id="fb-name" name="full_name" class="fb-input" type="text" placeholder="Введите имя и фамилию (как в журнале)" required>
+
+<label class="fb-label" for="fb-course">Курс, факультет:</label>
+<input id="fb-course" name="course_faculty" class="fb-input" type="text" placeholder="Введите свой курс и факультет" required>
+
+<label class="fb-label" for="fb-about">Пару слов о себе:</label>
+<textarea id="fb-about" name="about" class="fb-textarea" rows="4" placeholder="Коротко расскажите о себе…" required></textarea>
+
+<label class="fb-label" for="fb-preference">Пожелания к партнёру/другу:</label>
+<textarea id="fb-preference" name="preferences" class="fb-textarea" rows="4" placeholder="Расскажите о пожеланиях к партнёру или другу" required></textarea>
+
+<label class="fb-label" for="fb-looking">Кого ищете (друг/партнёр/пара на бал):</label>
+<textarea id="fb-looking" name="looking_for" class="fb-textarea" rows="3" placeholder="Напишите, кого вы ищете…" required></textarea>
+
+<label class="fb-label" for="fb-gender">Желаемый пол партнёра/друга:</label>
+<input id="fb-gender" name="desired_gender" class="fb-input" type="text" placeholder="Укажите желаемый пол партнёра/друга…" required>
+
+<textarea id="fb-comments" name="comments" class="fb-textarea" rows="3"
+placeholder="Можете вписать сюда дополнительные комментарии (по-желанию)"></textarea>
+
+
+  <button type="submit" class="fb-submit">Отправить</button>
+  <p id="fb-status" class="fb-status" aria-live="polite"></p>
+ </form>
+
+  
+    <p class="credits">
+      По всем вопросам, поломкам и просто чтобы выразить глубочайшую благодарность
+      обращайтесь к Элайзе&nbsp;Блекфорд&nbsp;и&nbsp;Беате&nbsp;ЛаВей.<br>
+      Ваш союз будет ещё крепче, если вы решите одарить нас подарками (но это не точно)
+    </p>
+
+  </div>
+
+  <script>
+const form = document.getElementById("feedbackForm");
+const status = document.getElementById("fb-status");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  
+  form.classList.add("submitted");
+
+ 
+  if (!form.checkValidity()) {
+    status.textContent = "⚠️ Пожалуйста, заполните все обязательные поля.";
+    status.className = "fb-status visible error";
+    return; // Останавливаем отправку
+  }
+
+  const data = new FormData(form);
+
+try {
+  const res = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  status.classList.add("visible");
+
+  if (res.ok) {
+    status.textContent = "Спасибо! Купидоны уже начали обрабатывать вашу заявку 💘";
+    status.className = "fb-status visible success";
+
+    // 💫 Волшебное сияние формы
+    form.classList.add("success-glow");
+    setTimeout(() => form.classList.remove("success-glow"), 1800);
+
+    form.reset();
+    form.classList.remove("submitted"); // сбрасываем подсветку
+  } else {
+    status.textContent = "❌ Упс! Что-то пошло не так.";
+    status.className = "fb-status visible error";
+  }
+} catch (error) {
+  status.textContent = "⚠️ Ошибка соединения. Попробуйте позже или обратитесь к свахам.";
+  status.className = "fb-status visible error";
+}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+body {
+  margin: 0;
+  background-color: #D1DFFF;
+  font-family: "Nunito", sans-serif;
+  color: #373452;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* --- FIXED HAMBURGER MENU --- */
+
+/* Скрываем чекбокс */
+#menu-toggle {
+  display: none;
+}
+
+/* ☰ иконка */
+.menu-icon {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  z-index: 1;
+}
+
+/* ✖ крестик */
+.close-icon {
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1002;
+  display: none;
+}
+
+/* Контейнер меню */
+.nav-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #373452e7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1000;
+}
+
+/* Ссылки меню */
+.nav-item {
+  color: white;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.nav-item:hover {
+  color: #D1DFFF;
+  font-weight: 600;
+}
+
+/* Когда меню открыто */
+#menu-toggle:checked ~ .nav-links {
+  transform: translateY(0);
+}
+
+#menu-toggle:checked ~ .close-icon {
+  display: block;
+}
+
+#menu-toggle:checked ~ .menu-icon {
+  display: none;
+}
+
+/* --- END FIXED HAMBURGER MENU --- */
+
+.container {
+  max-width: 70rem; 
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background-color: #D1DFFF;
+}
+
+
+h1 {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 2.8rem);
+  color: #504F5D;
+  margin-bottom: -1rem;
+}
+
+.subtitle {
+font-family: "Great Vibes", cursive;
+font-size: clamp(1rem, 2.05vw, 1.5rem);
+color: #5c5978;
+line-height: 2rem;
+margin-bottom: 3rem;
+}
+
+
+.text {
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  margin: 2.8rem 0;
+  color: #373452;
+  line-height: 2rem;
+  
+}
+
+
+.image {
+  display: block;
+  margin: 4rem auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.4rem;
+}
+
+
+h2 {
+  font-size: clamp(1.2rem, 2vw, 1.3rem);
+  margin-top: 3rem;
+  color: #373452;
+}
+
+
+.button {
+  background-color: #454F7B;
+  color: #fff;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+  border: none;
+  border-radius: 1rem;
+  padding: 0.6rem 2rem;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.button:hover {
+  background-color: #2a2a48;
+  transform: scale(1.03);
+}
+
+.decor-top {
+  width: 100%;
+  height: 11vh;
+  background-image: url("Image/image.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+.decor-bottom {
+  width: 100%;
+  height: 15vh;
+  background-image: url("Image/Bottom.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+}
+
+h3 {
+  margin-top: 2.5rem ;
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  margin-bottom: 2rem;
+  color: #373452;
+}
+
+ul {
+  font-size: 1rem;
+  list-style-type: none;
+  line-height: 1.7rem;
+  padding: 0;
+  margin-top: 0rem;
+  margin-bottom: 1.5rem;
+  text-align: left;       
+  display: inline-block;   
+}
+
+ul li::before {
+  content: "💞 ";
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+
+.footnote {
+  font-size: clamp(0.85rem, 1.3vw, 0.9rem);
+  color: #373452;
+  line-height: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.credits {
+  margin-top: 3.5rem;
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+  color: #5c5978;
+  line-height: 2rem;
+  word-break: keep-all;
+}
+
+.feedback-form {
+  background-color: #e6ebff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 15px rgba(69, 79, 123, 0.15);
+  margin: 3rem auto 4rem auto;
+  max-width: 45rem;
+  text-align: left;
+}
+
+/* подачные кнопки */
+.fb-fieldset {
+  border: none;
+  margin: 1.5rem 0 2rem 0;
+  text-align: center;
+}
+
+.fb-label {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: #373452;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.fb-radio {
+  display: inline-block;
+  margin: 0 1.2rem;
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: #373452;
+  cursor: pointer;
+}
+
+.fb-radio input {
+  margin-right: 0.4rem;
+  transform: scale(1.2);
+  accent-color: #454F7B;
+}
+
+/* Поля ввода и текстовые области */
+.fb-input,
+.fb-textarea {
+  width: 90%;
+  max-width: 80rem;
+  border: 2px solid #c2c8e4;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.4rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  font-family: "Nunito", sans-serif;
+  color: #373452;
+  background-color: #f8f8ff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fb-input:focus,
+.fb-textarea:focus {
+  outline: none;
+  border-color: #8fa1d3;
+  box-shadow: 0 0 8px rgba(123, 69, 100, 0.25);
+}
+
+/* Подсветка ошибок и валидности */
+.feedback-form.submitted .fb-input:invalid,
+.feedback-form.submitted .fb-textarea:invalid {
+  border-color: #e68a8a;
+  background-color: #fff5f5;
+}
+
+.feedback-form.submitted .fb-input:valid,
+.feedback-form.submitted .fb-textarea:valid {
+  border-color: #9dd8a0;
+  background-color: #f6fff6;
+}
+
+/* Кнопка */
+.fb-submit {
+  display: block;
+  background-color: #454F7B;
+  color: #fff;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+  border: none;
+  border-radius: 1rem;
+  padding: 0.7rem 1.5rem;
+  margin: 2rem auto 0 auto;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.fb-submit:hover {
+  background-color: #2a2a48;
+  transform: scale(1.03);
+}
+
+/* Сообщения о статусе */
+.fb-status {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+}
+
+.fb-status.success {
+  color: #2d8a2d;
+  animation: fadeIn 0.4s ease;
+}
+
+.fb-status.error {
+  color: #d13b3b;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/*Основательницы*/
+
+/* Страница основательниц */
+.founder {
+  margin-bottom: 5rem;
+}
+
+.photo {
+  width: clamp(180px, 40vw, 260px);
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(69,79,123,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 25px rgba(69,79,123,0.25);
+}
+
+.role {
+  font-size: clamp(1rem, 1vw, 1.1rem);
+  color: #373452;
+  max-width: 55rem;
+  margin: 0.5rem auto 1rem;
+}
+
+@media (max-width: 500px) and (min-width: 369px) {
+  body {
+    font-size: 0.875rem; 
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2, h3 {
+    font-size: 1rem;
+  }
+
+  .text, .subtitle, .credits, .footnote, ul li {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+
+  .button {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 331px)and (max-width: 369px){
+    ul {
+        font-size: 0.8rem;
+    }
+
+    .footnote {
+        font-size: 0.8rem;
+    }
+
+    .credits {
+        font-size: 0.7rem;
+    }
+}
