@@ -155,7 +155,7 @@ h2 {
 .decor-top {
   width: 100%;
   height: 11vh;
-  background-image: url("Image/image.png");
+  background-image: url("./Image/image.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: contain;
@@ -164,7 +164,7 @@ h2 {
 .decor-bottom {
   width: 100%;
   height: 15vh;
-  background-image: url("Image/Bottom.png");
+  background-image: url("./Image/Bottom.png");
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;
