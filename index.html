@@ -28,6 +28,42 @@
 
   gtag('config', 'G-7TS5FQPGKS');
 </script>
+
+<script>
+async function getFingerprint() {
+    const fpData = {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        screenResolution: `${screen.width}x${screen.height}`,
+        colorDepth: screen.colorDepth,
+        hardwareConcurrency: navigator.hardwareConcurrency,
+        deviceMemory: navigator.deviceMemory || "unknown",
+        cookiesEnabled: navigator.cookieEnabled,
+        doNotTrack: navigator.doNotTrack,
+    };
+
+    const jsonString = JSON.stringify(fpData);
+    const encoder = new TextEncoder();
+    const data = encoder.encode(jsonString);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const fingerprintHash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+    // сохраняем локально (пригодится)
+    localStorage.setItem("device_fingerprint", fingerprintHash);
+
+    // ОТПРАВКА В GOOGLE ANALYTICS: кастомное событие
+    gtag('event', 'fingerprint_event', {
+        device_fingerprint: fingerprintHash
+    });
+
+    return fingerprintHash;
+}
+
+getFingerprint();
+</script>
 </head>
 
 <body>
@@ -93,5 +129,10 @@
     </p>
 
   </div>
+  <p style="font-size:7px; opacity:0.3; margin-top:40px;">
+Этот сайт использует технические параметры устройства (браузер, язык, 
+разрешение экрана и др.) для аналитики и предотвращения мультиаккаунтов.
+Личные данные не собираются.
+</p>
 </body>
 </html>
